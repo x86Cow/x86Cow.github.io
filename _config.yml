@@ -28,11 +28,12 @@ github_username: x86Cow
 
 # Build settings
 theme: minima
+
 plugins:
   - jekyll-feed
 
 header_pages:
-  - about_me.markdown
+  - about_me.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
