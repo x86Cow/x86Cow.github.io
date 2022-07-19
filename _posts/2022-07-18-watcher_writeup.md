@@ -3,22 +3,21 @@ layout: post
 title: Watcher Write-Up
 comments: true
 ---
+The Watcher is a medium difficulty box on TryHackMe, and my first write-up. I learned a lot from completing this box and highly reccomend any beginner or intermediate hackers complete this box. Feel free to email me about any questions or recommendations.
 
 When approching a machine my first step is to use a map to see what is running on the server.
 `nmap -sV 10.10.130.17`
-When this command is run the first thing I notice is the http server and then secondly I see the ftp server.
+When this command is run the first thing I notice is the http server and secondly I see the ftp server.
 
-Let's take a look at the http server. I want to take a look at the website. This website looks like a blog. When you open one of the blog posts and take a look at it. First I looked at the URL to see that this blog uses php to access posts. We will come back to this later.
-Next, I used gobuster to fuzz the directories of the machine, you can also use dirbuster or ffuf.
+Let's take a look at the http server. I want to take a look at the website. This website looks like a blog. First, I looked at the URL to see that this blog uses php to access posts, we will come back to this later.
+Next, I used gobuster to fuzz the directories of the machine (you can also use dirbuster or ffuf).
 
 `gobuster dir -u 10.10.130.17 -w /usr/share/wordlists/dirb/common.txt`
 
-After this command is run, we see there is a robots.txt. Lets take a look at it.
-looking at 10.10.130.17/robots.txt, we find flag_1 and secret_file_do_not_read.txt. Congrats, We have our first flag!
+After this command is run, we see there is a robots.txt. when looking at 10.10.130.17/robots.txt, we find flag_1 and secret_file_do_not_read.txt. Congrats, we have our first flag!
 
-Now let's try and open secret_file_do_not_read.txt. We don't have permission to open this file, but maybe we can bypass this?
-Let's open a blog post again. In the url of the posts we have 
-
+Now let's try and open secret_file_do_not_read.txt. We don't have permission to open this file, but maybe we can bypass this.
+Let's open a blog post again. In the url of the posts we have::
 "http://10.10.130.17/post.php?post=&lt;postname>.php".
 
 The first thing I do when I see a php query is try to view /etc/passwd as a test.
@@ -31,7 +30,7 @@ Now that we know we can view files with this, lets open the secret file.
 "http://10.10.130.17/post.php?post=secret_file_do_not_read.txt"
 
 In this file there is a note to Mat about ftp credentials.
-when we sign into the ftp server we see some files: a directory called files and flag_2.txt
+When we sign into the ftp server we see two files: a directory called files and flag_2.txt
 
 We can copy the flag to our local machine with the get command and then view the flag on our local machine.
 
