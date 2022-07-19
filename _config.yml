@@ -28,7 +28,7 @@ github_username: x86Cow
 linkedin_username: x86Cow
 
 # Build settings
-theme: jekyll-theme-midnight
+theme: minima
 
 plugins:
   - jekyll-feed
