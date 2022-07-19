@@ -37,7 +37,7 @@ header_pages:
   - about_me.md
 
 disqus:
-  shortname: "www-x86cow.github.io"
+  shortname: "x86cow-github-io"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
