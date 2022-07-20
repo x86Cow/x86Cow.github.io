@@ -3,7 +3,7 @@ layout: post
 title: Watcher Write-Up
 comments: true
 ---
-The Watcher is a medium-difficulty box on the service TryHackMe, and this will be my first of many write-ups to come. I learned a lot from completing this box, and highly recommend any beginner-to-intermediate hackers complete it. Feel free to email me about any questions or recommendations you may have.
+[The Watcher](https://tryhackme.com/room/watcher)  is a medium-difficulty box on the service TryHackMe, and this will be my first of many write-ups to come. I learned a lot from completing this box, and highly recommend any beginner-to-intermediate hackers complete it. Feel free to email me about any questions or recommendations you may have.
 
 When approching a machine, our first step is to use `nmap` to see what is running on the server:
 `nmap -sV 10.10.130.17`
